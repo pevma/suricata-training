@@ -50,7 +50,7 @@ install_dependencies(){
 install_islet(){
   if ! [ -d islet ]
   then
-    git clone http://github.com/jonschipp/islet || die "Clone of islet repo failed"
+    git clone https://github.com/pevma/ISLET.git islet || die "Clone of islet repo failed"
     cd islet
     make install-docker && ./configure && make logo &&
     make install && make user-config USER=training PASS=suricata
