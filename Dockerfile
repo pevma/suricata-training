@@ -21,7 +21,7 @@ RUN apt-get install -yq libnss3-dev libnspr4-dev libgeoip-dev libgeoip1 --no-ins
 RUN apt-get install -yq libpcre3 libpcre3-dbg libpcre3-dev \
  build-essential autoconf automake libtool libpcap-dev libnet1-dev \
  libyaml-0-2 libyaml-dev zlib1g zlib1g-dev libcap-ng-dev libcap-ng0 \
- dnsutils net-tools \
+ dnsutils net-tools curl rustc cargo \
  make libmagic-dev libjansson-dev libjansson4 pkg-config --no-install-recommends
 
 # Configure Suricata
