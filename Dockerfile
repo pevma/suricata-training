@@ -1,8 +1,8 @@
 # Suricata
 #
-# VERSION               1.0
+# VERSION               2.0
 FROM      ubuntu
-MAINTAINER Jon Schipp <jonschipp@gmail.com>
+MAINTAINER Peter Manev <pmanev@oisf.net>
 
 # Metadata
 LABEL organization=oisf
