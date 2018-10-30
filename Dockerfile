@@ -38,6 +38,8 @@ ENV PATH=/root/.cargo/bin:$PATH
 RUN mkdir -p /opt/suricata-git/ && cd /opt/suricata-git/ && git clone  https://github.com/OISF/suricata.git && \
   cd suricata && \
   git clone https://github.com/OISF/libhtp.git -b 0.5.x &&  \
+  git clone https://github.com/OISF/suricata-update.git suricataupdate-git && \
+  mv suricataupdate-git/* suricata-update/ && \
   ./autogen.sh &&  \
   ./configure \
   --prefix=/opt/suricata-git/ --sysconfdir=/opt/suricata-git/etc --localstatedir=/opt/suricata-git/var   \
@@ -46,12 +48,14 @@ RUN mkdir -p /opt/suricata-git/ && cd /opt/suricata-git/ && git clone  https://g
   --with-libnspr-libraries=/usr/lib --with-libnspr-includes=/usr/include/nspr \
   --enable-geoip --enable-luajit  && \
   make clean &&  make -j3 && \
-  make install && \
+  make install-full && \
   ldconfig
 
 RUN mkdir -p /opt/suricata-git-profiling/ && cd /opt/suricata-git-profiling/ && git clone  https://github.com/OISF/suricata.git && \
   cd suricata && \
   git clone https://github.com/OISF/libhtp.git -b 0.5.x &&  \
+  git clone https://github.com/OISF/suricata-update.git suricataupdate-git && \
+  mv suricataupdate-git/* suricata-update/ && \
   ./autogen.sh &&  \
   ./configure \
   --prefix=/opt/suricata-git-profiling/ --sysconfdir=/opt/suricata-git-profiling/etc --localstatedir=/opt/suricata-git-profiling/var   \
@@ -60,7 +64,7 @@ RUN mkdir -p /opt/suricata-git-profiling/ && cd /opt/suricata-git-profiling/ && 
   --with-libnspr-libraries=/usr/lib --with-libnspr-includes=/usr/include/nspr \
   --enable-geoip --enable-luajit  && \
   make clean &&  make -j3 && \
-  make install && \
+  make install-full && \
   ldconfig
 
 # Configure Suricata
