@@ -28,12 +28,13 @@ RUN apt-get update && apt-get install -yq libpcap-dev libcap-ng-dev libnetfilter
  libhiredis-dev libprelude-dev libnetfilter-log-dev \
  valgrind libdevel-gdb-perl libcapture-tiny-perl \
  libevent-dev liblzma-dev liblz4-dev libhyperscan-dev libhyperscan4 \
+ rustc cargo \
  --no-install-recommends \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
  
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-ENV PATH=/root/.cargo/bin:$PATH
+#RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+#ENV PATH=/root/.cargo/bin:$PATH
 
 RUN mkdir -p /opt/suricata-git/ && cd /opt/suricata-git/ && git clone  https://github.com/OISF/suricata.git && \
   cd suricata && \
