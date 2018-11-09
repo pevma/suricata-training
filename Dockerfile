@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install dependencies
 RUN apt-get update && apt-get install -yq man-db software-properties-common vim nano screen tmux \
- htop tcpdump tshark wget gdb linux-tools-generic git-core \
+ htop tcpdump tshark wget gdb linux-tools-generic git-core unzip \
  dnsutils net-tools iputils-ping curl jq python python-scapy ethtool coccinelle \
  build-essential make autoconf automake libtool clang flex bison \
  pkg-config wireshark-common g++-multilib python-yaml jq clang-tools \
