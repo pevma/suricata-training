@@ -81,6 +81,8 @@ RUN apt-get clean \
 
 # User configuration
 RUN adduser --disabled-password --gecos "" $VIRTUSER
+RUN echo ":set nu" >> /etc/vim/vimrc
+RUN echo "set linenumbers" >> /etc/nanorc
 
 # Passwords
 RUN echo "$VIRTUSER:$VIRTUSER" | chpasswd
