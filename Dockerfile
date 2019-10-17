@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -yq man-db software-properties-common vim 
  htop tcpdump tshark wget gdb linux-tools-generic git-core unzip \
  dnsutils net-tools iputils-ping curl jq python python-scapy ethtool coccinelle \
  build-essential make autoconf automake libtool clang flex bison \
- pkg-config wireshark-common g++-multilib python-yaml jq clang-tools \
+ pkg-config wireshark-common g++-multilib python3-yaml jq clang-tools \
+ python3-distutils-extra libmaxminddb-dev \
  --no-install-recommends
  
 RUN apt-get update && apt-get install -yq libpcap-dev libcap-ng-dev libnetfilter-queue-dev \
@@ -45,8 +46,6 @@ RUN mkdir -p /opt/suricata-git/ && cd /opt/suricata-git/ && git clone  https://g
   ./configure \
   --prefix=/opt/suricata-git/ --sysconfdir=/opt/suricata-git/etc --localstatedir=/opt/suricata-git/var   \
   --enable-hiredis --enable-nfqueue \
-  --with-libnss-libraries=/usr/lib --with-libnss-includes=/usr/include/nss/ \
-  --with-libnspr-libraries=/usr/lib --with-libnspr-includes=/usr/include/nspr \
   --enable-geoip --enable-luajit  && \
   make clean &&  make -j3 && \
   make install-full && \
@@ -61,8 +60,6 @@ RUN mkdir -p /opt/suricata-git-profiling/ && cd /opt/suricata-git-profiling/ && 
   ./configure \
   --prefix=/opt/suricata-git-profiling/ --sysconfdir=/opt/suricata-git-profiling/etc --localstatedir=/opt/suricata-git-profiling/var   \
   --enable-hiredis --enable-nfqueue --enable-profiling --enable-profiling-locks \
-  --with-libnss-libraries=/usr/lib --with-libnss-includes=/usr/include/nss/ \
-  --with-libnspr-libraries=/usr/lib --with-libnspr-includes=/usr/include/nspr \
   --enable-geoip --enable-luajit  && \
   make clean &&  make -j3 && \
   make install-full && \
