@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -yq libpcap-dev libcap-ng-dev libnetfilter
  libnet1-dev libyaml-0-2 libyaml-dev zlib1g-dev \
  libmagic-dev libnss3-dev libnspr4-dev libjansson-dev \
  libgeoip-dev libluajit-5.1-dev libluajit-5.1-2 libluajit-5.1-common \
- libhiredis-dev libprelude-dev libnetfilter-log-dev \
+ lua5.3 libhiredis-dev libprelude-dev libnetfilter-log-dev \
  valgrind libdevel-gdb-perl libcapture-tiny-perl \
  libevent-dev liblzma-dev liblz4-dev libhyperscan-dev libhyperscan4 \
  rustc cargo \
