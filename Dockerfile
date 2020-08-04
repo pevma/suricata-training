@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install dependencies
 RUN apt-get update && apt-get install -yq man-db software-properties-common vim nano screen tmux \
  htop tcpdump tshark wget gdb linux-tools-generic git-core unzip \
- dnsutils net-tools iputils-ping curl jq python python-scapy ethtool coccinelle \
+ dnsutils net-tools iputils-ping curl jq python3 python3-scapy ethtool \
  build-essential make autoconf automake libtool clang flex bison \
  pkg-config wireshark-common g++-multilib python3-yaml jq clang-tools \
  python3-distutils-extra libmaxminddb-dev \
@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -yq libpcap-dev libcap-ng-dev libnetfilter
  libgeoip-dev libluajit-5.1-dev libluajit-5.1-2 libluajit-5.1-common \
  lua5.3 libhiredis-dev libprelude-dev libnetfilter-log-dev \
  valgrind libdevel-gdb-perl libcapture-tiny-perl \
- libevent-dev liblzma-dev liblz4-dev libhyperscan-dev libhyperscan4 \
+ libevent-dev liblzma-dev liblz4-dev libhyperscan-dev libhyperscan5 \
  rustc cargo \
  --no-install-recommends \
  && apt-get clean \
@@ -36,6 +36,9 @@ RUN apt-get update && apt-get install -yq libpcap-dev libcap-ng-dev libnetfilter
  
 #RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 #ENV PATH=/root/.cargo/bin:$PATH
+
+RUN cargo install -f cbindgen --root /usr/
+ENV PATH=/root/.cargo/bin:$PATH
 
 RUN mkdir -p /opt/suricata-git/ && cd /opt/suricata-git/ && git clone  https://github.com/OISF/suricata.git && \
   cd suricata && \
